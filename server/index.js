@@ -1,0 +1,10 @@
+import 'dotenv/config';
+import Discord from 'discord';
+
+const client = new Discord.Client();
+
+client.once('ready', () => {
+	console.log('Ready!');
+});
+
+client.login( process.env.BOT_TOKEN );
