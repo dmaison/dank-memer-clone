@@ -1,10 +1,14 @@
 import 'dotenv/config';
-import Discord from 'discord';
+import express from 'express';
+import routes from './routes/index.js';
+import { VerifyDiscordRequest } from './utils.js';
 
-const client = new Discord.Client();
+const app = express(),
+{ PORT } = process.env;
 
-client.once('ready', () => {
-	console.log('Ready!');
+// set up middleware
+app.use( express.json({ verify: VerifyDiscordRequest( process.env.PUBLIC_KEY ) }));
+app.use( routes );
+app.listen( PORT, () => {
+    console.log( `HTTP running on port ${ PORT } `);
 });
-
-client.login( process.env.BOT_TOKEN );
