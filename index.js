@@ -6,6 +6,11 @@ import {
 import { vagina, penis } from './genitals.js';
 import nacl from 'tweetnacl';
 
+/**
+ * Main handler
+ * @param {object} event Lambda request event object
+ * @returns {object} Lambda response event object
+ */
 export const handler = async ( event ) => {
 	
 	const { headers } = event || {},
@@ -26,10 +31,8 @@ export const handler = async ( event ) => {
 		}
 	}
 
-	const { type, id, data, member } = JSON.parse( event.body ),
-	{ name: commandName, options, resolved } = data || {},
-	{ user } = member || {},
-	{ id: userId } = user || {};
+	const { type, data } = JSON.parse( event.body ),
+	{ name: commandName, options, resolved } = data || {};
 
     // respond to verification requests
     if( type === InteractionType.PING ){
@@ -41,36 +44,38 @@ export const handler = async ( event ) => {
 		};
     }
 
-
+	// respond to slash commands
 	if (type === InteractionType.APPLICATION_COMMAND) {
-		//test
-		if( commandName === 'foo' ){
-			return JSON.stringify({  
-				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,  
-				data: { content: 'bar' }
-			})
-		}
-
-		if( commandName === 'rate' ){
-			return JSON.stringify({  
-				type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,  
-				data: { 
-					embeds: handleRate( options[0].value, resolved.users[ options[1].value ].global_name ),
+		switch( commandName ){
+			case 'rate':
+				return JSON.stringify({  
+					type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,  
+					data: { 
+						embeds: handleRate( options[0].value, resolved.users[ options[1].value ].global_name ),
+					}
+				});
+			default:
+				return {
+					statusCode: 404
 				}
-			})
 		}
 	}
 
-	return {
-		statusCode: 404
-	}
+	
 };
 
+/**
+ * Converts a provided number to a basic ASCII penis.
+ * 1:100 chance of getting a vagina, 1:100 chance of getting a detailed penis, 1:100 of getting tildes.
+ * 
+ * @param {number} percent Percentage to be converted
+ * @returns {string} Converted representation of the percentage
+ */
 function convertToPenis( percent ){
 	const count = Math.floor( percent/5 ),
-	vag = ( Math.floor( Math.random() * 100 ) === 1 ),
-	honkingDong = ( Math.floor( Math.random() * 100 ) === 1 ),
-	includeCum = ( Math.floor( Math.random() * 100 ) === 1 );
+	vag = ( Math.floor( Math.random() * 100 ) === 1 ), // get random chance for a vagina
+	honkingDong = ( Math.floor( Math.random() * 100 ) === 1 ), // get random chance for a honking dong
+	includeCum = ( Math.floor( Math.random() * 100 ) === 1 ); // get random chance for cum
 
 	if( vag ) return vagina;
 	if( honkingDong ) return penis;
@@ -81,24 +86,37 @@ function convertToPenis( percent ){
 
 	str += `D${ includeCum ? '~~' : '' }`;
 
-	if( percent === 100 ){
-		str += '\n\n ```diff\n-!!MAXIMUM PEEPEE!!-\n```';
-	}
+	// alert user to the maximum get
+	if( percent === 100 ) str += '\n\n ```diff\n-!!MAXIMUM PEEPEE!!-\n```';
 
 	return str;
 }
 
-function convertToTenth( value ){
-	return `${ Math.floor( value / 10 ) }/10`;
+/**
+ * Converts a percentage to a fraction of tenths
+ * 
+ * @param {number} percent Percentage to be converted
+ * @returns {string} Fractional representation of the percentage
+ */
+function convertToTenth( percent ){
+	return `${ Math.floor( percent / 10 ) }/10`;
 }
 
+/**
+ * Handles the output for the `/rate` command
+ * 
+ * @param {string} type Type of rate for the prompt
+ * @param {string} target User's public nickname
+ * @returns {object} Discord embed object
+ */
 function handleRate( type, target ){
 
 	let description,
-	value = Math.floor( Math.random() * 100 ),
+	value = Math.floor( Math.random() * 100 ), // get random value 1 to 100
 	color = 2829617;
 
-	if( [ 'null', null ].includes( target ) ) target = "Dank Memer";
+	// if no nickname is provided, default to the bot's name
+	if( [ 'null', null ].includes( target ) ) target = "fugbot";
 
 	switch( type ){
 		case 'peepee':
@@ -111,14 +129,6 @@ function handleRate( type, target ){
 			description = `${target} is ${ value }% ${ type }`;
 			break;
 	}
-
-	// fancy colors
-	/*
-	if( value < 25 ){
-		color = 11674146;
-	} else if( value > 75 ){
-		color = 8190976;
-	}*/
 
 	return ([{
 		title: `${ type } r8 machine`,
