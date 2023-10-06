@@ -72,10 +72,10 @@ export const handler = async ( event ) => {
  * @returns {string} Converted representation of the percentage
  */
 function convertToPenis( percent ){
-	const count = Math.floor( percent/5 ),
-	vag = ( Math.floor( Math.random() * 100 ) === 1 ), // get random chance for a vagina
-	honkingDong = ( Math.floor( Math.random() * 100 ) === 1 ), // get random chance for a honking dong
-	includeCum = ( Math.floor( Math.random() * 100 ) === 1 ); // get random chance for cum
+	const count = Math.ceil( percent/5 ),
+	vag = ( Math.ceil( Math.random() * 100 ) === 1 ), // get random chance for a vagina
+	honkingDong = ( Math.ceil( Math.random() * 100 ) === 1 ), // get random chance for a honking dong
+	includeCum = ( Math.ceil( Math.random() * 10 ) === 1 ); // get random chance for cum
 
 	if( vag ) return vagina;
 	if( honkingDong ) return penis;
@@ -99,7 +99,7 @@ function convertToPenis( percent ){
  * @returns {string} Fractional representation of the percentage
  */
 function convertToTenth( percent ){
-	return `${ Math.floor( percent / 10 ) }/10`;
+	return `${ Math.ceil( percent / 10 ) }/10`;
 }
 
 /**
@@ -112,7 +112,7 @@ function convertToTenth( percent ){
 function handleRate( type, target ){
 
 	let description,
-	value = Math.floor( Math.random() * 100 ), // get random value 1 to 100
+	value = Math.ceil( Math.random() * 100 ), // get random value 1 to 100
 	color = 2829617;
 
 	// if no nickname is provided, default to the bot's name
