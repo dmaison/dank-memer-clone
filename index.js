@@ -72,7 +72,7 @@ export const handler = async ( event ) => {
  * @returns {string} Converted representation of the percentage
  */
 function convertToPenis( percent ){
-	const count = Math.ceil( percent/5 ),
+	const count = Math.ceil( percent/5 ) - 1,
 	modifier = Math.ceil( Math.random() * 200 ),
 	vag = ( modifier === 1 ), // get random chance for a vagina
 	honkingDong = ( modifier === 200 ), // get random chance for a honking dong
@@ -83,12 +83,13 @@ function convertToPenis( percent ){
 
 	let str = '8';
 
-	for( let i = 0; i < count + 1; ++i ) str += '=';
+	for( let i = 1; i < count + 1; ++i ) str += '=';
 
 	str += `D${ includeCum ? '~~' : '' }`;
 
 	// alert user to the maximum get
 	if( percent === 100 ) str += '\n\n ```diff\n- MAXIMUM PEEPEE -\n```';
+	if( percent === 1 ) str += '\n\n ```diff\n- PEEPEE OF SHAME -\n```';
 
 	return str;
 }
