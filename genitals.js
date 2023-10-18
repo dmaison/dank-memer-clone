@@ -11,9 +11,9 @@ export const vagina = `
 ⠀⠳⡄⢸⠀⢸⣿⣿⡇⠀⡇⢠⠞⠀
 ⠀⠀⢹⠈⣇⠈⣿⣿⠁⣸⠁⡏⠀⠀
 ⠀⠀⠈⠳⣼⣆⠈⠁⣰⣧⠞⠁⠀⠀
-⠀⠀⠀⠀⠀⠛⠦⠴⠛⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠛⠦⠴⠛\n
 \`\`\`diff
--NOT A MAN-
+-!!NOT A MAN!!-
 \`\`\``;
 
 export const penis = `

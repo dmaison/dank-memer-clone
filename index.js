@@ -112,7 +112,7 @@ function convertToTenth( percent ){
 function handleRate( type, target ){
 
 	let description,
-	value = Math.ceil( Math.random() * 100 ), // get random value 1 to 100
+	value = Math.ceil( Math.random() * ( Math.random() * 100 ) ), // get random value 1 to 100
 	color = 2829617;
 
 	// if no nickname is provided, default to the bot's name
