@@ -87,7 +87,7 @@ function convertToPenis( percent ){
 	str += `D${ includeCum ? '~~' : '' }`;
 
 	// alert user to the maximum get
-	if( percent === 100 ) str += '\n\n ```diff\n-!!MAXIMUM PEEPEE!!-\n```';
+	if( percent === 100 ) str += '\n\n ```diff\n- MAXIMUM PEEPEE -\n```';
 
 	return str;
 }
