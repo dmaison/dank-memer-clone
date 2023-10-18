@@ -73,9 +73,10 @@ export const handler = async ( event ) => {
  */
 function convertToPenis( percent ){
 	const count = Math.ceil( percent/5 ),
-	vag = ( Math.ceil( Math.random() * 100 ) === 1 ), // get random chance for a vagina
-	honkingDong = ( Math.ceil( Math.random() * 100 ) === 1 ), // get random chance for a honking dong
-	includeCum = ( Math.ceil( Math.random() * 10 ) === 1 ); // get random chance for cum
+	modifier = Math.ceil( Math.random() * 200 ),
+	vag = ( modifier === 1 ), // get random chance for a vagina
+	honkingDong = ( modifier === 200 ), // get random chance for a honking dong
+	includeCum = ( modifier > 50 && modifier < 100 ); // get random chance for cum
 
 	if( vag ) return vagina;
 	if( honkingDong ) return penis;
