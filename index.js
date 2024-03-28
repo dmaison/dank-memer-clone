@@ -118,7 +118,7 @@ function handleRate( type, target ){
 	let description,
 	a = ( Math.random() * 100 ),
 	b = ( Math.random() * 100 ),
-	value = Math.ceil( ( a * b ) / 2  ), // get average of two random values
+	value = Math.ceil( ( a + b ) / 2  ), // get average of two random values
 	color = 2829617;
 
 	// if no nickname is provided, default to the bot's name
