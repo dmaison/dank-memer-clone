@@ -3,7 +3,7 @@ import {
     InteractionType,
     InteractionResponseType,
 } from 'discord-interactions';
-import { vagina, penis } from './genitals.js';
+import { vagina, penis, goaste } from './genitals.js';
 import nacl from 'tweetnacl';
 
 /**
@@ -75,11 +75,13 @@ function convertToPenis( percent ){
 	const count = Math.ceil( percent/5 ) - 1,
 	modifier = Math.ceil( Math.random() * 200 ),
 	vag = ( modifier === 1 ), // get random chance for a vagina
+	megaNerd = ( modifier === 100 ), // get random chance for goatse
 	honkingDong = ( modifier === 200 ), // get random chance for a honking dong
 	includeCum = ( modifier > 50 && modifier < 100 ); // get random chance for cum
 
 	if( vag ) return vagina;
 	if( honkingDong ) return penis;
+	if( megaNerd ) return goaste;
 
 	let str = '8';
 
@@ -114,7 +116,9 @@ function convertToTenth( percent ){
 function handleRate( type, target ){
 
 	let description,
-	value = Math.ceil( Math.random() * ( Math.random() * 100 ) ), // get random value 1 to 100
+	a = ( Math.random() * 100 ),
+	b = ( Math.random() * 100 ),
+	value = Math.ceil( ( a * b ) / 2  ), // get average of two random values
 	color = 2829617;
 
 	// if no nickname is provided, default to the bot's name
