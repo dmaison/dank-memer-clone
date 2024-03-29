@@ -3,7 +3,7 @@ import {
     InteractionType,
     InteractionResponseType,
 } from 'discord-interactions';
-import { vagina, penis, goaste } from './genitals.js';
+import { vagina, penis, goatse } from './genitals.js';
 import nacl from 'tweetnacl';
 
 /**
@@ -81,7 +81,7 @@ function convertToPenis( percent ){
 
 	if( vag ) return vagina;
 	if( honkingDong ) return penis;
-	if( megaNerd ) return goaste;
+	if( megaNerd ) return goatse;
 
 	let str = '8';
 
