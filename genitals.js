@@ -43,6 +43,7 @@ export const penis = `
 \`\`\``;
 
 export const goatse = `
+\`\`\`
 * g o a t s e x * g o a t s e x * g o a t s e x *
 g                                               g
 o /     \             \            /    \       o
@@ -68,6 +69,7 @@ s   |         / /      \__/\___/    |          |s
 e  |           /        |    |       |         |e
 x  |          |         |    |       |         |x
 * g o a t s e x * g o a t s e x * g o a t s e x *
+\`\`\`
 \`\`\`diff
 - YOU'VE BEEN ANUSED -
 \`\`\``;

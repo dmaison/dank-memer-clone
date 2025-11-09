@@ -5,6 +5,7 @@ import {
 } from 'discord-interactions';
 import { vagina, penis, goatse } from './genitals.js';
 import nacl from 'tweetnacl';
+import { BIRTHDAYS } from './birthdays.js';
 
 /**
  * Main handler
@@ -115,6 +116,10 @@ function convertToTenth( percent ){
  */
 function handleRate( type, target ){
 
+	const d = new Date(),
+	today = `${d.getMonth() + 1}/${ d.getDate() }`,
+	bDays = BIRTHDAYS[ today ];
+
 	let description,
 	a = ( Math.random() * 100 ),
 	b = ( Math.random() * 100 ),
@@ -135,6 +140,10 @@ function handleRate( type, target ){
 			description = `${target} is ${ value }% ${ type }`;
 			break;
 	}
+
+	if( bDay?.length > 0 ){
+		description = `${ description }\n\n *Psst... Today is ${ bDays.map( ( bDay ) => `${bDay}'${bDay.endsWith( 's' ) ? '' : 's' }` ).join( ' and ' ) } birthday!*`;
+	} 
 
 	return ([{
 		title: `${ type } r8 machine`,
