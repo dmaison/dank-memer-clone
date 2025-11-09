@@ -142,7 +142,7 @@ function handleRate( type, target ){
 	}
 
 	if( bDays?.length > 0 ){
-		description = `${ description }\n\n *Psst... Today is ${ bDays.map( ( bDay ) => `${bDay}'${bDay.endsWith( 's' ) ? '' : 's' }` ).join( ' and ' ) } birthday!*`;
+		description = `${ description }\n\n *Psst... Today is ${ bDays.map( ( bDay ) => `${bDay}'${bDay.endsWith( 's' ) ? '' : 's' }` ).join( ' and ' ) } birthday!* :birthday: :tada: `;
 	} 
 
 	return ([{
