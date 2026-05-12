@@ -4,5 +4,6 @@ export const BIRTHDAYS = {
     '7/19': [ 'Fenste' ],
     '9/17': [ 'Harland' ],
     '10/16': [ 'Dave' ],
-    '11/25': [ 'Bueno' ]
+    '11/25': [ 'Bueno' ],
+    '4/18': [ 'Sully' ]
 }
