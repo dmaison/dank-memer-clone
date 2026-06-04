@@ -118,7 +118,7 @@ function handleRate( type, target ){
 
 	const d = new Date(),
 	today = `${d.getMonth() + 1}/${ d.getDate() }`,
-	bDays = BIRTHDAYS[ today ];
+	bDays = BIRTHDAYS[ today ],
 	hDays = EVENTS[ today ];
 
 	let description,

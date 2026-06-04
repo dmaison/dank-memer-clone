@@ -7,9 +7,9 @@ export const BIRTHDAYS = {
     '10/16': [ 'Dave' ],
     '11/25': [ 'Bueno' ],
     '4/18': [ 'Sully' ]
-}
+};
 
 export const EVENTS = {
     '5/26': [ 'Harambe' ],
     '6/4': [ 'Killdozer' ],
-}
+};
